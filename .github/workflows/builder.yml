@@ -74,4 +74,5 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           tag_name: ${{ env.release_tag }}
         run: |
+          brew install hub
           hub release edit $(find . -type f -name "*.sif" -printf "-a %p ") -m "" "$tag_name" 

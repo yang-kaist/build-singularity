@@ -67,6 +67,10 @@ jobs:
                     echo "There was an issue building $container."          
                 fi
             done
+
+      - name: Install hub
+        uses: geertvdc/setup-hub@master
+
       - name: Upload Release Assets
         if: ${{ env.release_tag != env.latest_tag }}
         env:

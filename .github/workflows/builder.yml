@@ -68,9 +68,6 @@ jobs:
                 fi
             done
 
-      - name: Install hub
-        uses: geertvdc/setup-hub@master
-
       - name: Upload Release Assets
         if: ${{ env.release_tag != env.latest_tag }}
         env:
@@ -78,5 +75,5 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           tag_name: ${{ env.release_tag }}
         run: |
-          brew install hub
+          sudo apt install hub
           hub release edit $(find . -type f -name "*.sif" -printf "-a %p ") -m "" "$tag_name" 
